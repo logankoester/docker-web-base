@@ -5,6 +5,7 @@ class Packer < Thor
   def build(template)
     say "Updating cookbooks/", :green
     run "rm -r berks-cookbooks/"
+    Berkshelf::Cli.new.invoke :update
     Berkshelf::Cli.new.invoke :vendor
 
     say "Building packer template '#{template}'...", :green
