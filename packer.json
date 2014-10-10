@@ -6,12 +6,12 @@
     "type": "docker",
     "image": "logankoester/archlinux-chef",
     "commit": true,
-    "run_command": ["-d", "-P", "--expose=22", "-i", "-t", "{{.Image}}", "/bin/bash"]
+    "run_command": ["-d", "-P", "--expose=80", "--expose=22", "-i", "-t", "{{.Image}}", "/bin/bash"]
   }],
   "provisioners": [{
     "type": "chef-solo",
     "config_template": "solo.rb",
-    "cookbook_paths": ["cookbooks"],
+    "cookbook_paths": ["berks-cookbooks"],
     "execute_command": "{{if .Sudo}}sudo {{end}}chef-solo --no-color -c {{.ConfigPath}} -j {{.JsonPath}}",
     "json": {
       "github_users": {
@@ -22,7 +22,8 @@
     "roles_path": "roles",
     "run_list": [
       "role[supervisor]",
-      "role[ssh]"
+      "role[ssh]",
+      "role[nginx]"
     ],
     "skip_install": true,
     "staging_directory": "/tmp/packer-chef-solo"
