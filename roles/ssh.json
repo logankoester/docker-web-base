@@ -1,0 +1,27 @@
+{
+  "name": "ssh",
+  "description": "A secure OpenSSH service",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "ssh": {
+      "port": "22",
+      "password_authentication": "no",
+      "banner": "Welcome!",
+      "supervisor": true,
+      "use_pam": false
+    },
+    "github_users": {
+      "system": false,
+      "default_password": "changeme"
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[ssh-paranoid]",
+    "recipe[github_users]"
+  ],
+  "env_run_lists": {
+  }
+}

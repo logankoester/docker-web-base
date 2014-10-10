@@ -1,0 +1,8 @@
+.rake_test_cache
+*.sw[a-z]
+Berksfile.lock
+Gemfile.lock
+.kitchen/
+.kitchen.local.yml
+crash.log
+cookbooks/

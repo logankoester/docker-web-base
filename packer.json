@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "github_organization": "{{env `GITHUB_ORGANIZATION`}}"
+  },
+  "builders": [{
+    "type": "docker",
+    "image": "logankoester/archlinux-chef",
+    "commit": true,
+    "run_command": ["-d", "-P", "--expose=22", "-i", "-t", "{{.Image}}", "/bin/bash"]
+  }],
+  "provisioners": [{
+    "type": "chef-solo",
+    "config_template": "solo.rb",
+    "cookbook_paths": ["cookbooks"],
+    "execute_command": "{{if .Sudo}}sudo {{end}}chef-solo --no-color -c {{.ConfigPath}} -j {{.JsonPath}}",
+    "json": {
+      "github_users": {
+        "organization": "{{user `github_organization`}}"
+      }
+    },
+    "prevent_sudo": false,
+    "roles_path": "roles",
+    "run_list": [
+      "role[supervisor]",
+      "role[ssh]"
+    ],
+    "skip_install": true,
+    "staging_directory": "/tmp/packer-chef-solo"
+  }]
+}
