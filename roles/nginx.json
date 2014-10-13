@@ -11,6 +11,7 @@
   },
   "chef_type": "role",
   "run_list": [
+    "recipe[nginx::user]",
     "recipe[nginx::default]",
     "recipe[nginx::php_fpm]"
   ],

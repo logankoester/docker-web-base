@@ -4,8 +4,12 @@
   },
   "builders": [{
     "type": "docker",
-    "image": "logankoester/archlinux-chef",
-    "commit": true,
+    "image": "logankoester/archlinux-chef:latest",
+    "commit": false,
+    "export_path": "build.tar",
+    "volumes": {
+      "/var/cache/pacman/pkg": "/var/cache/pacman/pkg"
+    },
     "run_command": ["-d", "-P", "--expose=80", "--expose=22", "-i", "-t", "{{.Image}}", "/bin/bash"]
   }],
   "provisioners": [{
@@ -15,7 +19,8 @@
     "execute_command": "{{if .Sudo}}sudo {{end}}chef-solo --no-color -c {{.ConfigPath}} -j {{.JsonPath}}",
     "json": {
       "github_users": {
-        "organization": "{{user `github_organization`}}"
+        "organization": "{{user `github_organization`}}",
+        "group_name": "http"
       }
     },
     "prevent_sudo": false,
@@ -27,5 +32,13 @@
     ],
     "skip_install": true,
     "staging_directory": "/tmp/packer-chef-solo"
+  }, {
+    "type": "shell",
+    "inline": [
+      "rm -rf /var/cache/omnibus",
+      "rm -rf /tmp/selfgz*",
+      "pacman -Rs --noconfirm ruby ruby-bundler",
+      "rm -rf /usr/lib/ruby"
+    ]
   }]
 }
