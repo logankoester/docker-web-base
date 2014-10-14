@@ -18,7 +18,7 @@
 * Arch Linux (host)
 * Ruby
 * Bundler
-* Packer
+* Packer ~v0.7.1
 
 In the root directory...
 
