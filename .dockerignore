@@ -1,8 +1,0 @@
-.git/
-.gitignore
-.kitchen.yml
-Gemfile
-Gemfile.lock
-packer-*.json
-solo.rb
-crash.log

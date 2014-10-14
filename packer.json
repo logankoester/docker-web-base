@@ -6,7 +6,7 @@
     "type": "docker",
     "image": "logankoester/archlinux-chef:latest",
     "commit": false,
-    "export_path": "build.tar",
+    "export_path": "pkg/latest.tar",
     "volumes": {
       "/var/cache/pacman/pkg": "/var/cache/pacman/pkg"
     },
