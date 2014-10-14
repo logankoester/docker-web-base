@@ -6,7 +6,8 @@
   },
   "override_attributes": {
     "nginx": {
-      "supervisor": true
+      "supervisor": true,
+      "include_paths": ["/app"]
     }
   },
   "chef_type": "role",
