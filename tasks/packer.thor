@@ -12,4 +12,10 @@ class Packer < Thor
     run "packer build -var-file=variables.json #{template}"
   end
 
+  desc 'debug', 'Step through a Packer template build'
+  def debug(template)
+    say "Debugging packer template '#{template}'...", :green
+    run "packer build -debug -var-file=variables.json #{template}"
+  end
+
 end

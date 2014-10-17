@@ -29,6 +29,11 @@ In the root directory...
 
 The resulting build image will appear at `pkg/latest.tar`.
 
+### Debugging
+
+If the build process fails, try stepping through it with `bundle exec thor packer:debug packer.json`. While the
+container is running, you can use `nsenter` to poke around and see what's wrong.
+
 ## Launching the image
 
 Import the file to Docker with the `docker import` subcommand. Tag it however you like.
