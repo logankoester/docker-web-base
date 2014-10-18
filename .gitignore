@@ -6,7 +6,7 @@ Gemfile.lock
 crash.log
 berks-cookbooks/
 variables.json
-pkg/
+pkg/*.tar*
 /.config
 /coverage/
 /test/tmp/
