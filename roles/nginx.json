@@ -7,7 +7,7 @@
   "override_attributes": {
     "nginx": {
       "supervisor": true,
-      "include_paths": ["/app"]
+      "include_paths": ["/app/*.nginx.conf"]
     }
   },
   "chef_type": "role",
