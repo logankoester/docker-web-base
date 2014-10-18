@@ -12,6 +12,7 @@
   },
   "chef_type": "role",
   "run_list": [
+    "recipe[pacman]",
     "recipe[nginx::user]",
     "recipe[nginx::default]",
     "recipe[nginx::php_fpm]"
