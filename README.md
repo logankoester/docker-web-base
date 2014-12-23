@@ -22,10 +22,10 @@
 
 In the root directory...
 
-1) Run `bundle install` to install the gems
-2) Rename `variables.example.json` to `variables.json`
-3) Set the `github_organization` variable to the name of your Github organization.
-4) Run `bundle exec thor packer:build packer.json`
+1. Run `bundle install` to install the gems
+2. Rename `variables.example.json` to `variables.json`
+3. Set the `github_organization` variable to the name of your Github organization.
+4. Run `bundle exec thor packer:build packer.json`
 
 The resulting build image will appear at `pkg/latest.tar`.
 
